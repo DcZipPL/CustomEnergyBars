@@ -75,10 +75,10 @@ namespace CustomEnergyBar
 
 			foreach (string path in assetBundlePaths) {
 				EnergyBar energyBar = new EnergyBar(path, PrefabPool);
-				if (energyBar != null) {
-					AssetBundlePaths.Add(path);
-					CustomEnergyBars.Add(energyBar);
-				}
+				if (energyBar == null) continue;
+				
+				AssetBundlePaths.Add(path);
+				CustomEnergyBars.Add(energyBar);
 			}
 		}
 

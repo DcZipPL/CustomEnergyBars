@@ -1,6 +1,7 @@
 ﻿using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.MenuButtons;
 using System;
+using BeatSaberMarkupLanguage.Util;
 using Zenject;
 
 namespace CustomEnergyBar.Settings.UI
@@ -27,7 +28,7 @@ namespace CustomEnergyBar.Settings.UI
 
 		public void Dispose() {
 			if (_menuButton == null) return;
-			if (MenuButtons.IsSingletonAvailable && BSMLParser.IsSingletonAvailable) {
+			if (MenuButtons.instance != null && BSMLParser.instance != null) {
 				PersistentSingleton<MenuButtons>.instance.UnregisterButton(_menuButton);
 			}
 			_menuButton = null;
