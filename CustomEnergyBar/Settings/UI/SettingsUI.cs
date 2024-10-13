@@ -22,14 +22,14 @@ namespace CustomEnergyBar.Settings.UI
 		}
 
 		public void Initialize() {
-			PersistentSingleton<MenuButtons>.instance.RegisterButton(_menuButton);
+			MenuButtons.Instance.RegisterButton(_menuButton);
 			buttonCreated = true;
 		}
 
 		public void Dispose() {
 			if (_menuButton == null) return;
-			if (MenuButtons.instance != null && BSMLParser.instance != null) {
-				PersistentSingleton<MenuButtons>.instance.UnregisterButton(_menuButton);
+			if (MenuButtons.Instance != null && BSMLParser.Instance != null) {
+				MenuButtons.Instance.UnregisterButton(_menuButton);
 			}
 			_menuButton = null;
 		}

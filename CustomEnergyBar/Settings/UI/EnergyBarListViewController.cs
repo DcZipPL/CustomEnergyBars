@@ -49,23 +49,23 @@ namespace CustomEnergyBar.Settings.UI
 		public void ReloadEnergyBars() {
 			_energyLoader.Reload();
 			SetupList();
-			Select(customListTableData.tableView, _energyLoader.SelectedEnergyBar);
+			Select(customListTableData.TableView, _energyLoader.SelectedEnergyBar);
 		}
 
 		[UIAction("#post-parse")]
 		public void SetupList() {
-			customListTableData.data.Clear();
+			customListTableData.Data.Clear();
 
 			foreach (EnergyBar energyBar in _energyLoader.CustomEnergyBars) {
 				CustomListTableData.CustomCellInfo customCellInfo = new CustomListTableData.CustomCellInfo(energyBar.descriptor.name, energyBar.descriptor.author, energyBar.descriptor.icon);
-				customListTableData.data.Add(customCellInfo);
+				customListTableData.Data.Add(customCellInfo);
 			}
 
-			customListTableData.tableView.ReloadData();
+			customListTableData.TableView.ReloadData();
 			int selectedEnergyBar = _energyLoader.SelectedEnergyBar;
 
-			customListTableData.tableView.ScrollToCellWithIdx(selectedEnergyBar, TableView.ScrollPositionType.Beginning, false);
-			customListTableData.tableView.SelectCellWithIdx(selectedEnergyBar);
+			customListTableData.TableView.ScrollToCellWithIdx(selectedEnergyBar, TableView.ScrollPositionType.Beginning, false);
+			customListTableData.TableView.SelectCellWithIdx(selectedEnergyBar);
 		}
 
 		protected override void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
@@ -80,8 +80,8 @@ namespace CustomEnergyBar.Settings.UI
 			}
 
 			int selectedEnergyBar = _energyLoader.SelectedEnergyBar;
-			customListTableData.tableView.SelectCellWithIdx(selectedEnergyBar);
-			Select(customListTableData.tableView, selectedEnergyBar);
+			customListTableData.TableView.SelectCellWithIdx(selectedEnergyBar);
+			Select(customListTableData.TableView, selectedEnergyBar);
 		}
 
 		protected override void DidDeactivate(bool removedFromHierarchy, bool screenSystemDisabling) {
